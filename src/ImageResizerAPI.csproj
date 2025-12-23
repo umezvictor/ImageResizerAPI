@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+	<ContainerImageTags>1.0.0;latest</ContainerImageTags>
+	<ContainerRepository>image-resizer-app</ContainerRepository>
+	<PublishProfile>DefaultContainer</PublishProfile>
   </PropertyGroup>
 
   <ItemGroup>
