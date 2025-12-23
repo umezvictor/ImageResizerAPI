@@ -45,7 +45,7 @@ jobs:
         run: aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin ${{ secrets.REPOSITORY }}
 
       - name: 📦 Publish Docker Image to Amazon ECR
-        working-directory: ./ImageResizerAPI/src/Dockerfile
+        working-directory: ./src/
         run: |
           dotnet publish -c Release -p:ContainerRepository=${{ secrets.REPOSITORY }} -p:RuntimeIdentifier=linux-x64
           docker push ${{ secrets.REPOSITORY }} --all-tags
