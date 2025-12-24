@@ -69,5 +69,5 @@ jobs:
         with:
           task-definition: ./deployments/image-resizer-task-definition.json
           service: image-resizer-service
-          cluster: image-resizer-api-cluster
+          cluster: image-resizer
           wait-for-service-stability: true
