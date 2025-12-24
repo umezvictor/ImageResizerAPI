@@ -7,10 +7,15 @@
     "containerDefinitions": [
         {
             "cpu": 0,
-            "environment": [],
+            "environment": [
+                {
+                    "name": "ASPNETCORE_ENVIRONMENT",
+                    "value": "Development"
+                }
+            ],
             "environmentFiles": [],
             "essential": true,
-            "image": "261371110098.dkr.ecr.eu-north-1.amazonaws.com/image-resizer-app@sha256:0cfdc2800bedfd10f3c9c5551a7dbed3ffaa95477c0909aa70af0d333c30a353",
+            "image": "261371110098.dkr.ecr.eu-north-1.amazonaws.com/image-resizer",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -22,13 +27,13 @@
                 "secretOptions": []
             },
             "mountPoints": [],
-            "name": "image-resizer-api",
+            "name": "image-resizer",
             "portMappings": [
                 {
                     "appProtocol": "http",
-                    "containerPort": 80,
-                    "hostPort": 80,
-                    "name": "image-resizer-api-80-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "name": "image-resizer-8080-tcp",
                     "protocol": "tcp"
                 }
             ],
@@ -41,10 +46,10 @@
     "enableFaultInjection": false,
     "executionRoleArn": "arn:aws:iam::261371110098:role/EcsTaskExecutionRole",
     "family": "image-resizer",
-    "memory": "3072",
+    "memory": "2048",
     "networkMode": "awsvpc",
     "placementConstraints": [],
-    "registeredAt": "2025-12-23T15:03:00.481Z",
+    "registeredAt": "2025-12-24T13:06:59.840Z",
     "registeredBy": "arn:aws:iam::261371110098:user/victorblaze",
     "requiresAttributes": [
         {
@@ -58,9 +63,6 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -78,13 +80,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "revision": 1,
+    "revision": 3,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
     "status": "ACTIVE",
-    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:261371110098:task-definition/image-resizer:1",
+    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:261371110098:task-definition/image-resizer:3",
     "volumes": [],
     "tags": []
 }
