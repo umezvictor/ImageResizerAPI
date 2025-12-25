@@ -8,7 +8,7 @@ namespace ImageResizerAPI.Controllers
     [Route("[controller]")]
     public class ImageController : ControllerBase
     {
-
+        //dev
         private const string S3BucketName = "uploads-app-bucket";
         private readonly IAmazonS3 _s3Client;
         public ImageController(IAmazonS3 s3Client)
