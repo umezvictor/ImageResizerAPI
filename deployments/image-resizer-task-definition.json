@@ -1,8 +1,8 @@
 {
     "compatibilities": [
         "EC2",
-        "MANAGED_INSTANCES",
-        "FARGATE"
+        "FARGATE",
+        "MANAGED_INSTANCES"
     ],
     "containerDefinitions": [
         {
@@ -19,14 +19,13 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/image-resizer-v2",
+                    "awslogs-group": "/ecs/image-resizer",
                     "awslogs-create-group": "true",
                     "awslogs-region": "eu-north-1",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
             },
-            "memory": 2048,
             "mountPoints": [],
             "name": "image-resizer",
             "portMappings": [
@@ -46,11 +45,11 @@
     "cpu": "1024",
     "enableFaultInjection": false,
     "executionRoleArn": "arn:aws:iam::261371110098:role/EcsTaskExecutionRole",
-    "family": "image-resizer-v2",
+    "family": "image-resizer",
     "memory": "2048",
     "networkMode": "awsvpc",
     "placementConstraints": [],
-    "registeredAt": "2025-12-24T13:57:36.610Z",
+    "registeredAt": "2025-12-25T05:53:51.723Z",
     "registeredBy": "arn:aws:iam::261371110098:user/victorblaze",
     "requiresAttributes": [
         {
@@ -84,13 +83,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "revision": 1,
+    "revision": 8,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
     "status": "ACTIVE",
-    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:261371110098:task-definition/image-resizer-v2:1",
+    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:261371110098:task-definition/image-resizer:8",
     "taskRoleArn": "arn:aws:iam::261371110098:role/EcsTaskExecutionRole",
     "volumes": [],
     "tags": []
