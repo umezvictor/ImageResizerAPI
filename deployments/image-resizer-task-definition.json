@@ -1,8 +1,8 @@
 {
     "compatibilities": [
         "EC2",
-        "FARGATE",
-        "MANAGED_INSTANCES"
+        "MANAGED_INSTANCES",
+        "FARGATE"
     ],
     "containerDefinitions": [
         {
@@ -49,7 +49,7 @@
     "memory": "2048",
     "networkMode": "awsvpc",
     "placementConstraints": [],
-    "registeredAt": "2025-12-25T05:53:51.723Z",
+    "registeredAt": "2025-12-25T10:46:31.596Z",
     "registeredBy": "arn:aws:iam::261371110098:user/victorblaze",
     "requiresAttributes": [
         {
@@ -83,13 +83,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "revision": 8,
+    "revision": 11,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
     "status": "ACTIVE",
-    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:261371110098:task-definition/image-resizer:8",
+    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:261371110098:task-definition/image-resizer:11",
     "taskRoleArn": "arn:aws:iam::261371110098:role/EcsTaskExecutionRole",
     "volumes": [],
     "tags": []
