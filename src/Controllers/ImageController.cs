@@ -17,20 +17,20 @@ namespace ImageResizerAPI.Controllers
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> UploadImage(IFormFile file)
+        public async Task<IActionResult> UploadImage([FromForm] FileUploadVM vm)
         {
 
-            if (file.Length == 0)
+            if (vm.File.Length == 0)
                 return BadRequest("No file uploaded.");
 
-            using var stream = file.OpenReadStream();
+            using var stream = vm.File.OpenReadStream();
             var key = Guid.NewGuid();
             var putRequest = new PutObjectRequest
             {
                 BucketName = S3BucketName,
                 Key = $"images/{key}",
                 InputStream = stream,
-                ContentType = file.ContentType
+                ContentType = vm.File.ContentType
             };
 
             await _s3Client.PutObjectAsync(putRequest);
