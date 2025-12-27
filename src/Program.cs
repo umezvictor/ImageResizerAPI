@@ -1,4 +1,5 @@
 using Amazon.S3;
+using Azure.Storage.Blobs;
 using ImageResizerAPI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,13 @@ builder.Services.AddCors();
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 builder.Services.AddAWSService<IAmazonS3>();
 builder.Services.AddSignalR();
+
+builder.Services.AddSingleton(x =>
+{
+    var configuration = x.GetRequiredService<IConfiguration>();
+    string connectionString = configuration.GetSection("AzureBlobStorage")["ConnectionString"]!;
+    return new BlobServiceClient(connectionString);
+});
 
 var app = builder.Build();
 
