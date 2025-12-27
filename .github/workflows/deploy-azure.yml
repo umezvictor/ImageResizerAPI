@@ -23,7 +23,7 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Build project
-        run: dotnet build --configuration Release
+        run: dotnet build ./ImageResizerAPI.sln --no-restore
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
