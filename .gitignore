@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 .containers/
 /src/TextFile.txt
+/src/appsettings.json
