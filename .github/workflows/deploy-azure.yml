@@ -26,28 +26,28 @@ jobs:
         run: dotnet build ./ImageResizerAPI.sln --no-restore
 
   publish:
-  needs: build
-  if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-  runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: 🛠️ Checkout Repository
-      uses: actions/checkout@v4
+    steps:
+      - name: 🛠️ Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: ⚙️ Setup .NET 8 SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
+      - name: ⚙️ Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
-    - name: 🔑 Login to Azure Container Registry
-      uses: docker/login-action@v3
-      with:
-        registry: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
-        password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+      - name: 🔑 Login to Azure Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.ACR_NAME }}.azurecr.io
+          username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+          password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
 
-    - name: 🏗️ Publish and Build Docker Image
-      run: |
-        dotnet publish ./ImageResizerAPI/ImageResizerAPI.csproj -c Release -o publish
-        docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_IMAGE }}:${{ github.sha }} .
-        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.CONTAINER_IMAGE }}:${{ github.sha }}
+      - name: 🏗️ Publish and Build Docker Image
+        run: |
+          dotnet publish ./ImageResizerAPI/ImageResizerAPI.csproj -c Release -o publish
+          docker build -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.CONTAINER_IMAGE }}:${{ github.sha }} .
+          docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.CONTAINER_IMAGE }}:${{ github.sha }}
